@@ -42,8 +42,9 @@ public class ApiController {
 	personService.addPerson(person);
 	}
 	
-	@GetMapping(path="/login")
+	@GetMapping(path="login/{login}")
 	public Person returnPersonByLogin(@PathVariable("login") Login login) {
 	return personService.findPerson(login.getEmail(), login.getPassword());
 	}
+	
 }
