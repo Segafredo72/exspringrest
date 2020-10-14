@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import be.abis.exercise.model.Login;
 import be.abis.exercise.model.Person;
 import be.abis.exercise.service.PersonService;
 
@@ -39,5 +40,10 @@ public class ApiController {
 	@PostMapping(path="")
 	public void addNewPerson(@RequestBody Person person) throws IOException{
 	personService.addPerson(person);
+	}
+	
+	@GetMapping(path="/login")
+	public Person returnPersonByLogin(@PathVariable("login") Login login) {
+	return personService.findPerson(login.getEmail(), login.getPassword());
 	}
 }
