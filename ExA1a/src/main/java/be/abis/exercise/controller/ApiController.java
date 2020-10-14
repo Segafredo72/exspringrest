@@ -1,5 +1,7 @@
 package be.abis.exercise.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,5 +26,11 @@ public class ApiController {
 	
 	} // localhost:8085/exercise/person/3
 	
+	@GetMapping("")
+	public ArrayList<Person> returnAllPerson() {
+	
+	return personService.getAllPersons();
+	
+	} // localhost:8085/exercise/person/
 	
 }
