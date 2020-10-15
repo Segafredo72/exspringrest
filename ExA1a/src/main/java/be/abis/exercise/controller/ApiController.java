@@ -44,13 +44,13 @@ public class ApiController {
 	personService.addPerson(person);
 	}
 	
-	@GetMapping(path="login")
+	@PostMapping(path="login")
 	public Person returnPersonByLogin(@RequestBody Login login) {
 	return personService.findPerson(login.getEmail(), login.getPassword());
 	}
 	
-	@DeleteMapping(path="remove")
-	public void removePersonById(@RequestBody int id) throws PersonCanNotBeDeletedException {
+	@DeleteMapping("{id}")
+	public void removePersonById(@PathVariable("id") int id) throws PersonCanNotBeDeletedException {
 	personService.deletePerson(id);	
 	}
 	
