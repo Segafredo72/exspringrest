@@ -171,8 +171,9 @@ public class FilePersonRepository implements PersonRepository {
 	private StringBuilder parsePerson(Person p) {
 		StringBuilder sb = new StringBuilder();
 		int nr = p.getCompany().getAddress().getNr();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		sb.append(p.getPersonId() + ";").append(p.getFirstName() + ";").append(p.getLastName() + ";")
-				.append((! p.getBirthDate().toString().contentEquals("31/12/9999") ? p.getBirthDate() : null) + ";")
+				.append(formatter.format(p.getBirthDate()) + ";")
 				.append(p.getEmailAddress() + ";")
 				.append(p.getPassword() + ";").append(p.getLanguage().toLowerCase() + ";")
 				.append(p.getCompany().getName() + ";").append(p.getCompany().getTelephoneNumber() + ";")
