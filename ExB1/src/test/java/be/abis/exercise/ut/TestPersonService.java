@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import be.abis.exercise.service.ApiPersonService;
+import be.abis.exercise.service.PersonService;
 
 @SpringBootTest 
 @RunWith(SpringRunner.class)
 public class TestPersonService {
 
 	@Autowired
-	ApiPersonService aps;
+	PersonService ps;
 	
 	@Test
 	public void firstPersonFirstNameJohn() {
 		int id = 1;
-		assertEquals("John", aps.findPerson(id).getFirstName());
+		assertEquals("John", ps.findPerson(id).getFirstName());
 				
 	}
 	
