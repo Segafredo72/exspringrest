@@ -5,17 +5,18 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import be.abis.exercise.service.ApiPersonService;
 import be.abis.exercise.service.PersonService;
 
 public class TestPersonService {
 
 	@Autowired
-	PersonService ps;
+	ApiPersonService aps;
 	
 	@Test
 	void firstPersonFirstNameJohn() {
 		int id = 1;
-		assertEquals("John", ps.findPerson(id).getFirstName());
+		assertEquals("John", aps.findPerson(id).getFirstName());
 				
 	}
 	
