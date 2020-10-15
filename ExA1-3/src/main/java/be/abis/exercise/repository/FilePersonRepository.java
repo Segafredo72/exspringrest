@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -34,6 +35,7 @@ public class FilePersonRepository implements PersonRepository {
 
 	public void readFile() {
 
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		if (allPersons.size() != 0)
 			allPersons.clear();
 		BufferedReader br = null;
@@ -59,7 +61,7 @@ public class FilePersonRepository implements PersonRepository {
 					p.setPersonId(!vals[0].equals("null") ? Integer.parseInt(vals[0]) : 0);
 					p.setFirstName(!vals[1].equals("null") ? vals[1] : null);
 					p.setLastName(!vals[2].equals("null") ? vals[2] : null);
-					p.setBirthDate(LocalDate.parse(!vals[3].equals("null") ? vals[3] : "9999-12-31"));
+					p.setBirthDate(LocalDate.parse(!vals[3].equals("null") ? vals[3] : "31/12/9999", formatter));
 					p.setEmailAddress(!vals[4].equals("null") ? vals[4] : null);
 					p.setPassword(!vals[5].equals("null") ? vals[5] : null);
 					p.setLanguage(!vals[6].equals("null") ? vals[6] : null);
@@ -170,7 +172,7 @@ public class FilePersonRepository implements PersonRepository {
 		StringBuilder sb = new StringBuilder();
 		int nr = p.getCompany().getAddress().getNr();
 		sb.append(p.getPersonId() + ";").append(p.getFirstName() + ";").append(p.getLastName() + ";")
-				.append((! p.getBirthDate().toString().contentEquals("9999-12-31") ? p.getBirthDate() : null) + ";")
+				.append((! p.getBirthDate().toString().contentEquals("31/12/9999") ? p.getBirthDate() : null) + ";")
 				.append(p.getEmailAddress() + ";")
 				.append(p.getPassword() + ";").append(p.getLanguage().toLowerCase() + ";")
 				.append(p.getCompany().getName() + ";").append(p.getCompany().getTelephoneNumber() + ";")

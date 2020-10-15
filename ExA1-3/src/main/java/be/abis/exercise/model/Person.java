@@ -2,12 +2,16 @@ package be.abis.exercise.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Person {
 	
 	private int personId;
 
 	private String firstName;
 	private String lastName;
+	
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate birthDate;
 	private String emailAddress;
 	private String password;
@@ -33,7 +37,7 @@ public class Person {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	
 	public LocalDate getBirthDate() {
 		return birthDate;
 	}
