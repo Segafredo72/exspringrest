@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import be.abis.exercise.model.Login;
 import be.abis.exercise.model.Person;
 
 @Service
@@ -30,8 +31,11 @@ public class ApiPersonService implements PersonService {
 
 	@Override
 	public Person findPerson(String emailAddress, String passWord) {
-		// TODO Auto-generated method stub
-		return null;
+		Login login = new Login();
+		login.setEmail(emailAddress);
+		login.setPassword(passWord);
+		return rt.postForObject(baseUri+"/login",login,Person.class);
+		
 	}
 
 	@Override
